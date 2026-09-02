@@ -1,0 +1,217 @@
+/* ==========================================================
+   GLOBAL STYLES — mobile-first
+   Most users are on Android phones with small screens, so every
+   touch target is sized generously (min 44px tall) and layouts
+   default to a single column.
+   ========================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-primary: #1a5f3f;      /* deep safety green */
+  --color-primary-dark: #124a30;
+  --color-accent: #d97706;       /* amber — HSE warning tone */
+  --color-danger: #b91c1c;
+  --color-success: #15803d;
+  --color-bg: #f4f6f5;
+  --color-surface: #ffffff;
+  --color-text: #1f2937;
+  --color-text-muted: #6b7280;
+  --color-border: #e2e5e3;
+  --radius: 10px;
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  padding-bottom: 2rem;
+}
+
+header.app-header {
+  background: var(--color-primary);
+  color: #fff;
+  padding: 1rem 1.25rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+header.app-header h1 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+header.app-header .subtitle {
+  font-size: 0.8rem;
+  opacity: 0.85;
+  margin-top: 0.15rem;
+}
+
+nav.app-nav {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--color-primary-dark);
+  overflow-x: auto;
+}
+
+nav.app-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.12);
+  white-space: nowrap;
+}
+
+nav.app-nav a.active {
+  background: var(--color-accent);
+  font-weight: 600;
+}
+
+main {
+  padding: 1rem;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 1.05rem;
+  margin: 1.25rem 0 0.75rem;
+}
+
+.card {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--color-border);
+}
+
+label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 0.75rem 0 0.3rem;
+  color: var(--color-text-muted);
+}
+
+input[type="text"],
+input[type="file"],
+select {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--color-text);
+}
+
+.btn {
+  display: inline-block;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  min-height: 44px;
+}
+
+.btn:active {
+  background: var(--color-primary-dark);
+}
+
+.btn--secondary {
+  background: #fff;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.btn--small {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  min-height: 38px;
+}
+
+.btn--disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.btn-full {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--color-text-muted);
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+}
+
+.empty-state.error {
+  color: var(--color-danger);
+}
+
+.loading {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  padding: 0.5rem 0;
+}
+
+/* Toast notifications */
+#toast,
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 1.25rem;
+  transform: translateX(-50%) translateY(150%);
+  background: #111827;
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  max-width: 90%;
+  text-align: center;
+  transition: transform 0.25s ease;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.toast--visible {
+  transform: translateX(-50%) translateY(0);
+}
+
+.toast--success {
+  background: var(--color-success);
+}
+
+.toast--error {
+  background: var(--color-danger);
+}
+
+.home-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.home-links a.btn {
+  width: 100%;
+}
