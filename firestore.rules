@@ -1,0 +1,49 @@
+rules_version = '2';
+
+/**
+ * ==============================================================
+ * ⚠️  SECURITY FLAG — PLEASE READ BEFORE DEPLOYING  ⚠️
+ * ==============================================================
+ * This ruleset currently allows ANYONE who has your app's URL to
+ * read AND write every document in this database — there is no
+ * login system in Phase 1, so there is no way for Firestore to tell
+ * "your colleague using the app" apart from "a stranger who found
+ * the URL." That is a deliberate, temporary trade-off to get a
+ * working pilot in front of real users quickly — it is NOT safe for
+ * a public rollout or for data you can't afford to have tampered with.
+ *
+ * WHAT TO DO ABOUT IT, IN ORDER OF EFFORT:
+ * 1. Cheapest/quickest: don't publish the URL anywhere public, and
+ *    treat the pilot as "share this link only with the people testing
+ *    it." Still risky if the link leaks, but workable for a short
+ *    internal trial.
+ * 2. Better: add Firebase Authentication (e.g. email/password or a
+ *    magic link) and change every "allow read, write: if true;" below
+ *    to "allow read, write: if request.auth != null;" — this requires
+ *    signing in but still doesn't distinguish roles (any signed-in
+ *    user can edit anything).
+ * 3. Best (production-grade): add Firebase Auth AND role-based rules
+ *    (e.g. only HSE staff can delete a document; only the uploader or
+ *    an admin can edit it). This needs custom claims or a "roles"
+ *    collection and is real, non-trivial security-rules engineering —
+ *    flag this to me explicitly if/when you want to tackle it, don't
+ *    expect it to be a quick patch.
+ * ==============================================================
+ */
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /documents/{docId} {
+      allow read, write: if true;
+
+      match /versions/{versionId} {
+        allow read, write: if true;
+      }
+
+      match /acknowledgments/{ackId} {
+        allow read, write: if true;
+      }
+    }
+  }
+}

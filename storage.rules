@@ -1,0 +1,27 @@
+rules_version = '2';
+
+/**
+ * ==============================================================
+ * ⚠️  SECURITY FLAG — same situation as firestore.rules  ⚠️
+ * ==============================================================
+ * No login yet, so this allows anyone with the app URL to upload
+ * and download files. See the long note in firestore.rules for the
+ * three options to tighten this up before a wider rollout.
+ *
+ * One extra thing enforced here that ISN'T in the Firestore rules:
+ * a basic file size cap (15MB) as a server-side backstop. The app's
+ * own upload form already checks this (utils.js validateFile), but
+ * that client-side check is easy to bypass (e.g. someone calling the
+ * API directly) — this rule is the real enforcement.
+ * ==============================================================
+ */
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /documents/{docId}/{fileName} {
+      allow read: if true;
+      allow write: if true
+                   && request.resource.size < 15 * 1024 * 1024;
+    }
+  }
+}
