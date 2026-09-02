@@ -31,13 +31,14 @@
  */
 
 const firebaseConfig = {
-  apiKey: "REPLACE_WITH_YOUR_API_KEY",
-  authDomain: "REPLACE_WITH_YOUR_PROJECT.firebaseapp.com",
-  projectId: "REPLACE_WITH_YOUR_PROJECT_ID",
-  storageBucket: "REPLACE_WITH_YOUR_PROJECT.appspot.com",
-  messagingSenderId: "REPLACE_WITH_YOUR_SENDER_ID",
-  appId: "REPLACE_WITH_YOUR_APP_ID"
+  apiKey: "AIzaSyDch92cXA6yqfa8DjkaVMX8ik150LXx4sQ",
+  authDomain: "safetylog-9fc29.firebaseapp.com",
+  projectId: "safetylog-9fc29",
+  storageBucket: "safetylog-9fc29.firebasestorage.app",
+  messagingSenderId: "636674248670",
+  appId: "1:636674248670:web:778757152f72c61150d74f"
 };
+
 
 // Initialize Firebase (using the "compat" SDK — this lets us use plain
 // <script> tags with no build tools, which matches the "no React unless
