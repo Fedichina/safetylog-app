@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document Register — SafetyLog</title>
+  <link rel="manifest" href="../manifest.json" />
+  <meta name="theme-color" content="#1a5f3f" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/documents.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>Document Register</h1>
+    <div class="subtitle">Upload, version, and track SOPs &amp; policies</div>
+  </header>
+
+  <nav class="app-nav">
+    <a href="../index.html">Home</a>
+    <a href="documents.html" class="active">Documents</a>
+  </nav>
+
+  <main>
+    <!-- UPLOAD FORM -->
+    <section class="card">
+      <h2 style="margin-top:0;">Upload a Document</h2>
+      <form id="uploadForm">
+        <label for="docTitle">Document Title</label>
+        <input type="text" id="docTitle" placeholder="e.g. LOTO Procedure" required />
+
+        <label for="docCategory">Category</label>
+        <select id="docCategory" required>
+          <option value="" disabled selected>Select category…</option>
+          <option value="Policy">Policy</option>
+          <option value="Procedure">Procedure</option>
+          <option value="SOP">SOP</option>
+          <option value="Form">Form</option>
+          <option value="Register">Register</option>
+          <option value="Protocol">Protocol</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <label for="docFile">File</label>
+        <input type="file" id="docFile" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.jpg,.jpeg,.png" required />
+
+        <label for="uploadedBy">Uploaded By</label>
+        <select id="uploadedBy" required></select>
+
+        <p style="font-size:0.75rem;color:var(--color-text-muted);margin-top:0.6rem;">
+          Tip: if you upload a new file using the exact same Title and Category
+          as an existing document, it will be saved as a new version — the old
+          version is kept, not deleted.
+        </p>
+
+        <button type="submit" class="btn btn-full">Upload Document</button>
+      </form>
+    </section>
+
+    <!-- DOCUMENT LIST -->
+    <h2>All Documents</h2>
+    <div id="documentList">
+      <p class="loading">Loading documents…</p>
+    </div>
+  </main>
+
+  <!-- Firebase SDKs (compat build — works with plain script tags, no bundler needed) -->
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-storage-compat.js"></script>
+
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/shared/utils.js"></script>
+  <script src="../js/shared/staff-list.js"></script>
+  <script src="../js/modules/documents.js"></script>
+</body>
+</html>
